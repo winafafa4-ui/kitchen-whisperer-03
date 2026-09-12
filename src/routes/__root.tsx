@@ -77,11 +77,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Cooking Kitchen Partners" },
+      {
+        name: "description",
+        content:
+          "Your kitchen. Your ingredients. Your next meal. Offline recipe ideas from what you already have.",
+      },
+      { name: "author", content: "Cooking Kitchen Partners" },
+      { name: "theme-color", content: "#f7f5ec" },
+      { property: "og:title", content: "Cooking Kitchen Partners" },
+      {
+        property: "og:description",
+        content: "Find meals you can cook with the ingredients already in your kitchen.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
