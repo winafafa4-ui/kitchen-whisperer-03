@@ -67,11 +67,11 @@ export interface IngredientInventory {
   ingredientId: string;
   name: string;
   category: IngredientCategory;
-  quantity?: number;
+  quantity?: number | undefined;
   unit: Unit;
   isAvailable: boolean;
   useSoon: boolean;
-  expiryDate?: string;
+  expiryDate?: string | undefined;
   createdAt: string;
   updatedAt: string;
 }
@@ -83,9 +83,9 @@ export type RecipeCategory = "Indonesian" | "Asian" | "Western";
 export interface RecipeIngredient {
   ingredientId: string;
   name: string;
-  amount?: number;
+  amount?: number | undefined;
   unit: Unit;
-  optional?: boolean;
+  optional?: boolean | undefined;
 }
 
 export interface Recipe {
@@ -109,7 +109,7 @@ export interface CookingHistoryEntry {
   recipeId: string;
   recipeName: string;
   cookedAt: string;
-  rating?: "loved" | "okay" | "no";
+  rating?: "loved" | "okay" | "no" | undefined;
 }
 
 export interface Preferences {
