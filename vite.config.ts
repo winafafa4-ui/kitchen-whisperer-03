@@ -11,5 +11,17 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // Prerender every screen to plain HTML so the built output can be packaged
+    // as an offline Android app with Capacitor (see ANDROID.md).
+    prerender: { enabled: true, crawlLinks: true },
+    pages: [
+      { path: "/" },
+      { path: "/kitchen" },
+      { path: "/cook" },
+      { path: "/discover" },
+      { path: "/saved" },
+      { path: "/settings" },
+      { path: "/history" },
+    ],
   },
 });

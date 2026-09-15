@@ -20,13 +20,13 @@ import type {
 } from "@/types";
 
 interface AddIngredientInput {
-  ingredientId?: string;
+  ingredientId?: string | undefined;
   name: string;
-  category?: IngredientInventory["category"];
-  quantity?: number;
-  unit?: Unit;
-  useSoon?: boolean;
-  expiryDate?: string;
+  category?: IngredientInventory["category"] | undefined;
+  quantity?: number | undefined;
+  unit?: Unit | undefined;
+  useSoon?: boolean | undefined;
+  expiryDate?: string | undefined;
 }
 
 interface AppStore {

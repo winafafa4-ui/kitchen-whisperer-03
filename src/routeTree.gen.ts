@@ -12,8 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CookRouteImport } from './routes/cook'
 import { Route as DiscoverRouteImport } from './routes/discover'
+import { Route as HistoryRouteImport } from './routes/history'
 import { Route as KitchenRouteImport } from './routes/kitchen'
 import { Route as SavedRouteImport } from './routes/saved'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as RecipeRecipeIdRouteImport } from './routes/recipe.$recipeId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -31,6 +33,11 @@ const DiscoverRoute = DiscoverRouteImport.update({
   path: '/discover',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KitchenRoute = KitchenRouteImport.update({
   id: '/kitchen',
   path: '/kitchen',
@@ -39,6 +46,11 @@ const KitchenRoute = KitchenRouteImport.update({
 const SavedRoute = SavedRouteImport.update({
   id: '/saved',
   path: '/saved',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RecipeRecipeIdRoute = RecipeRecipeIdRouteImport.update({
@@ -51,16 +63,20 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cook': typeof CookRoute
   '/discover': typeof DiscoverRoute
+  '/history': typeof HistoryRoute
   '/kitchen': typeof KitchenRoute
   '/saved': typeof SavedRoute
+  '/settings': typeof SettingsRoute
   '/recipe/$recipeId': typeof RecipeRecipeIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cook': typeof CookRoute
   '/discover': typeof DiscoverRoute
+  '/history': typeof HistoryRoute
   '/kitchen': typeof KitchenRoute
   '/saved': typeof SavedRoute
+  '/settings': typeof SettingsRoute
   '/recipe/$recipeId': typeof RecipeRecipeIdRoute
 }
 export interface FileRoutesById {
@@ -68,23 +84,42 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cook': typeof CookRoute
   '/discover': typeof DiscoverRoute
+  '/history': typeof HistoryRoute
   '/kitchen': typeof KitchenRoute
   '/saved': typeof SavedRoute
+  '/settings': typeof SettingsRoute
   '/recipe/$recipeId': typeof RecipeRecipeIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/cook' | '/discover' | '/kitchen' | '/saved' | '/recipe/$recipeId'
+    | '/'
+    | '/cook'
+    | '/discover'
+    | '/history'
+    | '/kitchen'
+    | '/saved'
+    | '/settings'
+    | '/recipe/$recipeId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cook' | '/discover' | '/kitchen' | '/saved' | '/recipe/$recipeId'
+  to:
+    | '/'
+    | '/cook'
+    | '/discover'
+    | '/history'
+    | '/kitchen'
+    | '/saved'
+    | '/settings'
+    | '/recipe/$recipeId'
   id:
     | '__root__'
     | '/'
     | '/cook'
     | '/discover'
+    | '/history'
     | '/kitchen'
     | '/saved'
+    | '/settings'
     | '/recipe/$recipeId'
   fileRoutesById: FileRoutesById
 }
@@ -92,8 +127,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CookRoute: typeof CookRoute
   DiscoverRoute: typeof DiscoverRoute
+  HistoryRoute: typeof HistoryRoute
   KitchenRoute: typeof KitchenRoute
   SavedRoute: typeof SavedRoute
+  SettingsRoute: typeof SettingsRoute
   RecipeRecipeIdRoute: typeof RecipeRecipeIdRoute
 }
 
@@ -120,6 +157,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DiscoverRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kitchen': {
       id: '/kitchen'
       path: '/kitchen'
@@ -132,6 +176,13 @@ declare module '@tanstack/react-router' {
       path: '/saved'
       fullPath: '/saved'
       preLoaderRoute: typeof SavedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/recipe/$recipeId': {
@@ -148,8 +199,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CookRoute: CookRoute,
   DiscoverRoute: DiscoverRoute,
+  HistoryRoute: HistoryRoute,
   KitchenRoute: KitchenRoute,
   SavedRoute: SavedRoute,
+  SettingsRoute: SettingsRoute,
   RecipeRecipeIdRoute: RecipeRecipeIdRoute,
 }
 export const routeTree = rootRouteImport

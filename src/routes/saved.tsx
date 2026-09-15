@@ -29,7 +29,7 @@ function SavedPage() {
   const { saved, available } = useAppStore();
   const matches = saved
     .map((id) => RECIPE_BY_ID[id])
-    .filter(Boolean)
+    .filter((r): r is NonNullable<typeof r> => Boolean(r))
     .map((r) => calculateRecipeMatch(r, available));
 
   return (

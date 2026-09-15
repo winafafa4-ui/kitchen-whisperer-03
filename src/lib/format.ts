@@ -19,7 +19,7 @@ export function formatAmount(value: number): string {
   const whole = Math.floor(value);
   const frac = value - whole;
   if (frac < 0.06) return String(whole || 0);
-  let best = FRACTIONS[0];
+  let best = FRACTIONS[0]!;
   let bestDiff = Infinity;
   for (const f of FRACTIONS) {
     const d = Math.abs(f[0] - frac);
